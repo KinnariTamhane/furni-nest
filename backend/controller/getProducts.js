@@ -4,7 +4,6 @@ const Products = require('../model/productModel');
 
 const getProducts = asyncHandler(async(req,res)=>{
     const data = await Products.find();
-    console.log('data ->',data);
     if(!data){
         res.status(400);
         throw new Error('Error Detected');
@@ -13,7 +12,16 @@ const getProducts = asyncHandler(async(req,res)=>{
 })
 
 const addProducts = asyncHandler(async(req,res)=>{
+    
    const {product_id, name ,category,description,stock,image,price,rating} = req.body;
+
+   const existingProduct = await Products.findOne({ name: name });
+    if (existingProduct) {
+      console.log('Product already exists:', existingProduct);
+      return res.json({ message: 'Product already exists'})
+    }
+
+
    const createProduct = await Products.create({
     product_id,
     name ,

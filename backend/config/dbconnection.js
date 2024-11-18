@@ -4,7 +4,15 @@ const uri = "mongodb+srv://kinnari123:admin123@kinnaricluster.njse3tl.mongodb.ne
 
 const connect = async() => {
     try{
-        const connectToDB = await  mongoose.connect(uri)
+        const connectToDB = await  mongoose.connect(uri, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+            serverSelectionTimeoutMS: 30000, // Increase to 30 seconds
+        })
+        .then(() => console.log('Database connected successfully'))
+        .catch(err => console.error('Database connection error:', err));
+        mongoose.set('bufferCommands', false);
+        // mongoose.set('debug', true);
     }
     catch(e){
         console.log("error", e);
