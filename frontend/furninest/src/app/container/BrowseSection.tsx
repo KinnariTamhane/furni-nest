@@ -5,8 +5,8 @@ function BrowseSection() {
   return (
     <div>
       <h2 className='text-3xl mt-10 text-center'>Browse The Range</h2>
-      <p className='mt-5 text-center'>Explore our curated collection of timeless designs for every space.</p>
-      <div className='md:grid md:grid-cols-3 mx-10 mt-10 md:space-x-5 place-items-center'>
+      <p className='mt-5 text-center px-3'>Explore our curated collection of timeless designs for every space.</p>
+      <div className='lg:grid lg:grid-cols-3  mx-10 mt-10 lg:space-x-5 place-items-center'>
         <div className='border text-center px-3 h-auto w-[300px] p-5 m-auto mt-10 hover:underline hover:border-2 cursor-pointer'>
         <Image
             src="/livingroom.jpeg"
