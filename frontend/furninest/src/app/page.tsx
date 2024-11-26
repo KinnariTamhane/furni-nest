@@ -1,19 +1,28 @@
-import Image from "next/image";
+'use client';
+
+
 import Banner from './container/BannerSection'
 import Header from './container/Header'
 import Browse from "./container/BrowseSection";
-import Products from './container/ProductSection'
+import Products from './container/ProductSection';
+import { useState } from 'react';
+
+// export const CategorySelected = createContext();
 
 export default function Home() {
+
+const [type,setType] = useState('');
+
+const selectedCategory = (category:string) => {
+  setType(category)
+}
+
   return (
-    <div className="">
-      <main className="">
+    <main>
           <Header/>
           <Banner/>
-          <Browse/>
-          <Products/>
-      </main>
-
-    </div>
-  );
+          <Browse callback={selectedCategory}/>
+          <Products selectedType={type || ''}/>
+    </main>
+  )
 }

@@ -21,8 +21,6 @@ function ProductSection() {
 
   const filteredData = data.filter((_item, index) => index < 46);
 
-
-
   useEffect(()=>{
       fetch('http://localhost:5001/products')
       .then((response)=>response.json())
